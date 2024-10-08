@@ -26,15 +26,15 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('auth/', views.index, name='index'),
     path('streetflow1', include('streetflow1.urls')),
-    path('members/', include('members.urls')),
-    path('map2/', include('map.urls')),
+
+    #path('map2/', include('map.urls')),
     path('/contactus', views.contactus, name='contactus'),
-    path('/ticket', views.ticket, name='ticket'),
-    path('/map', views.map, name='map'),
+    #path('/ticket', views.ticket, name='ticket'),
+    #path('/map', views.map, name='map'),
     path('reserve', views.reserve, name='reserve'),
-    path('', include('reserve.urls')),
-    path('', include('ticket.urls')),
-    path('ticket/',include('ticket.urls')),
+    #path('', include('reserve.urls')),
+    #path('', include('ticket.urls')),
+    #path('ticket/',include('ticket.urls')),
     path('sendmail', views.sendmail, name='sendmail'),
 
 ]

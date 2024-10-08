@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Startup Page </title>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="../static/images/street22.jpg" alt="">
+        <!--<div class="text">
+          <span class="text-1">Travel smart</span>
+          <span class="text-2"><br>& Ride with Heart</span>
+        </div>-->
+      </div>
+      <div class="back">
+        <img class="backImg" src="../static/images/street%2025.jpg" alt="">
+        <!--<div class="text">
+          <span class="text-1">Life is a journey, not a destination</span>
+          <span class="text-2"><br>Enjoy the ride with Street Flow</span>
+        </div>-->
+      </div>
+    </div>
+       {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+             
+            <div class="alert 
+            alert-warning 
+            alert-dismissible fade show
+            " role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+        
+          <form method="POST" action="{% url 'login' %}"> <!--Login -->
+              {% csrf_token %}
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+              </div>
+              <div class="text"><a href="{% url 'password_reset' %}">Forgot password?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label for="flip">Signup now</label></div>
+            </div>
+        </form>
+      </div>
+        <div class="signup-form">
+          <div class="title">Signup</div>
+        <form method="POST" > <!-- Sign Up -->
+            {% csrf_token %} 
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Enter your name" name="username" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" name="email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="password" required>
+              </div>
+              <div class="button input-box">
+               <input type="submit" name="register">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
